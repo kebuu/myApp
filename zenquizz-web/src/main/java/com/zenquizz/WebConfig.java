@@ -1,9 +1,9 @@
-package com.zenquizz.dao;
+package com.zenquizz;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.zenquizz.dao.base.ConstantKt;
+import com.zenquizz.base.ConstantKt;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

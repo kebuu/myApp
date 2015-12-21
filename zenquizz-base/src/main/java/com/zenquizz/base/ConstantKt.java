@@ -1,4 +1,4 @@
-package com.zenquizz.dao.base;
+package com.zenquizz.base;
 
 public interface ConstantKt {
 

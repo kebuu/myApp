@@ -2,12 +2,14 @@ package com.zenquizz.dao;
 
 import com.mongodb.DB;
 import com.mongodb.Mongo;
-import com.zenquizz.dao.base.ConstantKt;
+import com.zenquizz.base.ConstantKt;
 import org.jongo.Jongo;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan
 public class DaoConfig {
 
     @Bean
