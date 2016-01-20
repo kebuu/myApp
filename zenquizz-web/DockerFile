@@ -1,0 +1,7 @@
+FROM develar/java:8u45
+
+ADD target/zenquizz-web-*.jar /opt/zenquizz-web/bin/zenquizz-web.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/opt/zenquizz-web/bin/zenquizz-web.jar"]

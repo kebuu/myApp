@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/test")
 public class TestController {
 
-    @Autowired TestModelRepository testModelRepository;
+    @Autowired private TestModelRepository testModelRepository;
 
-    @RequestMapping("/test")
+    @RequestMapping
     public String test() {
         return "Alive !";
     }
 
-    @RequestMapping("/test/list")
+    @RequestMapping("/list")
     public List<TestModel> testList() {
         return testModelRepository.findAll();
     }

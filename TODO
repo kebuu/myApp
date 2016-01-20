@@ -1,4 +1,5 @@
-Maven enforcer
-git plugin ?
+git plugin Pour cache burst ?
 actuator
 metrics ?
+mode debug en inte ? -javaagent:E:/ctardella/bin/spring-loaded/springloaded-1.2.5.RELEASE.jar -noverify
+websocket ?

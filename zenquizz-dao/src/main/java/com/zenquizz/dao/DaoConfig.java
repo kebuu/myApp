@@ -14,7 +14,7 @@ public class DaoConfig {
 
     @Bean
     public Jongo jongo(Mongo mongo) {
-        DB db = mongo.getDB(ConstantKt.MONGO_DB_NAME);
+        DB db = mongo.getDB(ConstantKt.getMONGO_DB_NAME());
         return new Jongo(db);
     }
 }

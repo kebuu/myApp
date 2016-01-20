@@ -1,0 +1,29 @@
+## docker
+
+# Mongo
+docker run -d -m 2g -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" tutum/mongodb:2.6
+
+# Test docker deployment
+https://hub.docker.com/r/tutum/hello-world/
+docker run -d -p 9182:80 tutum/hello-world
+
+# VM IP
+192.168.99.100
+
+# Sonar
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1
+
+# Jenkins
+docker run -d -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins:1.625.3
+
+## VirtualBox
+VBoxManage guestproperty get [vmname] "/VirtualBox/GuestInfo/Net/0/V4/IP"
+
+## Spring loaded
+java -javaagent:E:\ctardella\bin\spring-loaded\springloaded-1.2.5.RELEASE.jar -noverify SomeJavaClass
+
+## YouTrack
+https://zenquizz.myjetbrains.com/youtrack
+
+## BitBucket
+https://bitbucket.org/ctardella/zenquizz
