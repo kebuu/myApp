@@ -5,3 +5,6 @@ val MAIN_DATE_FORMAT = "dd-MM-yyyy HH:mm:ssZZ"
 
 // Mongo
 val MONGO_DB_NAME = "zenquizz"
+
+// Security
+val SECURITY_ROLE_USER = "USER"

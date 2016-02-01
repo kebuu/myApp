@@ -1,19 +1,15 @@
 package com.zenquizz.dao;
 
 import com.github.fakemongo.Fongo;
-import com.mongodb.Mongo;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 @Configuration
-@EnableAutoConfiguration
-public class DbTestBaseConfiguration {
+public class DbTestConfig {
 
     @Bean
-    @Primary
-    public Mongo fongo() {
+    public MongoClient fongo() {
         return new Fongo("dao-test").getMongo();
     }
 }

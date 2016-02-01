@@ -3,12 +3,8 @@
     <title>Secured Google</title>
 </head>
 <body>
-<h3>Secured Hello, <span th:text="${profile.displayName}">Some User</span>!</h3>
+<h3>Secured Hello, <span th:text="${user.displayName}">Some User</span>!</h3>
 
-<span th:text="${profile.image}">Image</span>
-<span th:text="${profile.id}">Id</span>
-<span th:text="${profile.firstName}">First name</span>
-<span th:text="${profile.lastName}">Last Name</span>
-<span th:text="${profile.email}">Some email</span>
+Your email is <span th:text="${user.email}">email</span><br/>
 </body>
 </html>

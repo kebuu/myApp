@@ -17,13 +17,12 @@ public class SocialUserDetailsServiceImpl implements SocialUserDetailsService {
 
     @Override
     public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
-        SocialUserDetails socialUserDetails = null;
         User user = userRepository.findByEmail(userId);
 
-        if (user != null) {
-            socialUserDetails = new SocialUserDetailsImpl(user);
+        if (user == null) {
+            user = new User();
         }
 
-        return socialUserDetails;
+        return new SocialUserDetailsImpl(user);
     }
 }

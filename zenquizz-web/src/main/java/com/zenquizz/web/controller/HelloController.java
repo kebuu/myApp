@@ -12,7 +12,7 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/")
-public class HelloController {
+public class HelloController extends SecuredController{
 
     private Google google;
     private ConnectionRepository connectionRepository;
@@ -30,8 +30,18 @@ public class HelloController {
     }
 
     @RequestMapping(path = "/securedHello", method= RequestMethod.GET)
-    public String securedHello(Principal principal, Model model) {
-        model.addAttribute("profile", principal);
+    public String securedHello(Model model) {
+        model.addAttribute("user", getAuthenticatedUser());
         return "secured/securedHello";
+    }
+
+    @RequestMapping(path = "/angular", method= RequestMethod.GET)
+    public String angular() {
+        return "secured/withAngular2";
+    }
+
+    @RequestMapping(path = "/react", method= RequestMethod.GET)
+    public String react() {
+        return "secured/withReact";
     }
 }

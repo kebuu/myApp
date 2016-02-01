@@ -12,11 +12,13 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestController {
 
+    public static final String TEST_MESSAGE = "Alive !";
+
     @Autowired private TestModelRepository testModelRepository;
 
     @RequestMapping
     public String test() {
-        return "Alive !";
+        return TEST_MESSAGE;
     }
 
     @RequestMapping("/list")

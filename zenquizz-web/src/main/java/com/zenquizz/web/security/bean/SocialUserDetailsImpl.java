@@ -2,12 +2,15 @@ package com.zenquizz.web.security.bean;
 
 import com.zenquizz.dao.model.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.security.SocialUserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-public class SocialUserDetailsImpl implements SocialUserDetails {
+public class SocialUserDetailsImpl implements SocialUserDetails, UserDetails {
 
     private User user;
 
@@ -22,18 +25,28 @@ public class SocialUserDetailsImpl implements SocialUserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        return grantedAuthorities;
     }
 
-    @Override
+    public String getEmail() {
+        return user.getEmail();
+    }
+    public String getDisplayName() {
+        return user.getFirstName() + " " + user.getLastName();
+    }
+
     public String getPassword() {
-        return null;
+        return user.getEmail();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getEmail();
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

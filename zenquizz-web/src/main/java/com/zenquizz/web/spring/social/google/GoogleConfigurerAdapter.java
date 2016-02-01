@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.env.Environment;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.social.config.annotation.ConnectionFactoryConfigurer;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.Connection;
@@ -18,6 +19,7 @@ import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.security.SocialAuthenticationToken;
 
 @Configuration
 @EnableConfigurationProperties(GoogleProperties.class)
@@ -30,6 +32,10 @@ public class GoogleConfigurerAdapter extends SocialConfigurerAdapter {
     @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
     public Google google(ConnectionRepository repository) {
         Connection<Google> connection = repository.findPrimaryConnection(Google.class);
+        if (connection == null && SecurityContextHolder.getContext().getAuthentication() instanceof SocialAuthenticationToken) {
+            SocialAuthenticationToken authentication = (SocialAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+            connection = (Connection<Google>) authentication.getConnection();
+        }
         return connection != null ? connection.getApi() : null;
     }
 

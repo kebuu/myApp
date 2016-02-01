@@ -10,17 +10,23 @@ import org.springframework.social.connect.UserProfile;
 public class AccountConnectionSignUp implements ConnectionSignUp {
 
     @Autowired
-    private final UserRepository accountRepository;
+    private final UserRepository userRepository;
 
-    public AccountConnectionSignUp(UserRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AccountConnectionSignUp(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public String execute(Connection<?> connection) {
         UserProfile profile = connection.fetchUserProfile();
-        User account = new User();
-        accountRepository.insert(account);
-        return account.getEmail();
+        User user = userRepository.findByEmail(profile.getEmail());
+        if (user == null) {
+            user = new User();
+            user.setEmail(profile.getEmail());
+            user.setFirstName(profile.getFirstName());
+            user.setLastName(profile.getLastName());
+            userRepository.insert(user);
+        }
+        return user.getEmail();
     }
 
 }
