@@ -11,7 +11,7 @@ docker run -d -p 9182:80 tutum/hello-world
 192.168.99.100
 
 # Sonar
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1 -e SONARQUBE_JDBC_USERNAME=zenquizz -e SONARQUBE_JDBC_PASSWORD=zenquizzadmin
 
 # Jenkins
 docker run -d -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins:1.625.3
